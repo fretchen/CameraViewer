@@ -4,7 +4,7 @@ from app.cameracontrol import bp
 from app.cameracontrol.models import workers, Camera
 import os
 
-from flask import render_template, flash, redirect, url_for, session
+from flask import render_template, flash, redirect, url_for, session, current_app
 from flask_socketio import emit, disconnect
 
 @bp.route('/add_camera', methods=['GET', 'POST'])
@@ -26,7 +26,9 @@ def add_camera():
              flash('{}'.format(e), 'error')
              return redirect(url_for('cameracontrol.add_camera'))
 
+    app = current_app._get_current_object() #as app:
     folder = app.config['CAMERA_FOLDER']
+
     n_ards = 0
     return render_template('add_camera.html', folder = folder, cform = cform, n_ards=n_ards);
 

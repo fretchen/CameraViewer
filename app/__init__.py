@@ -44,11 +44,6 @@ def create_app(config_class=ProductionConfig):
     from app.cameracontrol import bp as camera_bp
     app.register_blueprint(camera_bp)
 
-    from app.thermocontrol import bp as thermocontrol_bp
-    app.register_blueprint(thermocontrol_bp)
-
-    from app.serialmonitor import bp as serialmonitor_bp
-    app.register_blueprint(serialmonitor_bp)
 
     if not app.debug:
         if app.config['MAIL_SERVER']:

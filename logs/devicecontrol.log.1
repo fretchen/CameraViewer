@@ -1,0 +1,128 @@
+2019-10-09 13:15:04,019 INFO: DeviceControl startup [in /Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/__init__.py:73]
+2019-10-09 13:15:11,336 ERROR: Exception on / [GET] [in /usr/local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/routes.py", line 21, in index
+    n_sm = len(smonitors);
+NameError: global name 'smonitors' is not defined
+2019-10-09 13:15:27,478 INFO: DeviceControl startup [in /Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/__init__.py:73]
+2019-10-09 13:15:35,829 ERROR: Exception on / [GET] [in /usr/local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/routes.py", line 24, in index
+    return render_template('index.html',n_tcs = n_tcs, tempcontrols = tcontrols,
+NameError: global name 'n_tcs' is not defined
+2019-10-09 13:16:01,336 INFO: DeviceControl startup [in /Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/__init__.py:73]
+2019-10-09 13:16:12,157 ERROR: Exception on /index [GET] [in /usr/local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/routes.py", line 24, in index
+    return render_template('index.html', n_cameras = n_cameras, cameras = cams);
+  File "/usr/local/lib/python2.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/usr/local/lib/python2.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/usr/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/usr/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/usr/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/usr/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/templates/base.html", line 56, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/templates/index.html", line 8, in block "app_content"
+    <a class="btn btn-default" id="add_tempcontrol" href="{{url_for('thermocontrol.add_tempcontrol')}}"> Add another Temp control.</a>
+  File "/usr/local/lib/python2.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/usr/local/lib/python2.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+BuildError: Could not build url for endpoint 'thermocontrol.add_tempcontrol'. Did you mean 'cameracontrol.add_camera' instead?
+2019-10-09 14:19:43,142 ERROR: Exception on /index [GET] [in /usr/local/lib/python2.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/routes.py", line 24, in index
+    return render_template('index.html', n_cameras = n_cameras, cameras = cams);
+  File "/usr/local/lib/python2.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/usr/local/lib/python2.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/usr/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/usr/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/usr/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/usr/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/usr/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/templates/base.html", line 56, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/main/templates/index.html", line 8, in block "app_content"
+    <a class="btn btn-default" id="add_tempcontrol" href="{{url_for('thermocontrol.add_tempcontrol')}}"> Add another Temp control.</a>
+  File "/usr/local/lib/python2.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python2.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/usr/local/lib/python2.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+BuildError: Could not build url for endpoint 'thermocontrol.add_tempcontrol'. Did you mean 'cameracontrol.add_camera' instead?
+2019-10-09 14:21:17,492 INFO: DeviceControl startup [in /Users/fredjendrzejewski/Documents/GitHub/CameraViewer/app/__init__.py:73]

@@ -4,8 +4,6 @@ from app.main import bp
 from app.main.forms import LoginForm, RegistrationForm
 from app.main.models import User
 
-from app.thermocontrol.models import TempControl, WebTempControl
-from app.serialmonitor.models import ArduinoSerial
 from app.cameracontrol.models import Camera
 
 from flask import render_template, flash, redirect, url_for, session
@@ -19,25 +17,11 @@ def index():
     '''
     The main function for rendering the principal site.
     '''
-    if current_user.is_authenticated:
-        wtcontrols = WebTempControl.query.filter_by(user_id = current_user.id).all();
-        n_wtcs = WebTempControl.query.filter_by(user_id = current_user.id).count();
-    else:
-        wtcontrols = WebTempControl.query.all();
-        n_wtcs = WebTempControl.query.count();
-
-    tcontrols = TempControl.query.all();
-    n_tcs = len(tcontrols);
-
-
-    smonitors = ArduinoSerial.query.all();
-    n_sm = len(smonitors);
 
     cams = Camera.query.all();
     n_cameras = len(cams);
 
-    return render_template('index.html',n_tcs = n_tcs, tempcontrols = tcontrols,
-    n_wtcs = n_wtcs, wtempcontrols = wtcontrols, n_sm = n_sm, serialmonitors = smonitors, n_cameras = n_cameras, cameras = cams);
+    return render_template('index.html', n_cameras = n_cameras, cameras = cams);
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
