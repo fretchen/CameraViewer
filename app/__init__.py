@@ -12,8 +12,6 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 
-eventlet.monkey_patch();
-
 bootstrap = Bootstrap();
 db = SQLAlchemy();
 migrate = Migrate();

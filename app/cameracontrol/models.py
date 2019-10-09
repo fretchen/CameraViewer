@@ -2,32 +2,34 @@ import os
 import eventlet
 from datetime import datetime
 from app import db, socketio
-
+from flask import current_app
 workers = [];
 
-def do_work(cam_id):
+def do_work(cam_id, app):
     """
     do work and emit message
     """
     previous_img_files = set()
-    cam = Camera.query.get(int(cam_id));
-    while cam.switch:
-        img_files = set(os.path.join(cam.folder, f) for f in os.listdir(cam.folder) if f.endswith('.BMP'))
-        new_img_files = img_files.difference(previous_img_files)
-        if new_img_files:
-            timestamp = datetime.now().replace(microsecond=0).isoformat();
-            for img_file in new_img_files:
-                n_img = imageio.imread(img_file);
 
-                im_crop = n_img[cam.yMin:cam.yMax,cam.xMin:cam.xMax];
-                Nat = int(im_crop.sum());
-            socketio.emit('camera_response',
-                {'time':timestamp, 'data': n_img.tolist(), 'id': cam.id, 'Nat': Nat,
-                'xmin': cam.xMin, 'xmax': cam.xMax, 'ymin':cam.yMin, 'ymax':cam.yMax})
+    with app.app_context():
+        cam = Camera.query.get(int(cam_id));
+        while cam.switch:
+            img_files = set(os.path.join(cam.folder, f) for f in os.listdir(cam.folder) if f.endswith('.BMP'))
+            new_img_files = img_files.difference(previous_img_files)
+            if new_img_files:
+                timestamp = datetime.now().replace(microsecond=0).isoformat();
+                for img_file in new_img_files:
+                    n_img = imageio.imread(img_file);
 
-            previous_img_files = img_files;
+                    im_crop = n_img[cam.yMin:cam.yMax,cam.xMin:cam.xMax];
+                    Nat = int(im_crop.sum());
+                socketio.emit('camera_response',
+                    {'time':timestamp, 'data': n_img.tolist(), 'id': cam.id, 'Nat': Nat,
+                    'xmin': cam.xMin, 'xmax': cam.xMax, 'ymin':cam.yMin, 'ymax':cam.yMax})
 
-        eventlet.sleep(1)
+                previous_img_files = img_files;
+
+            eventlet.sleep(1)
 
 class Camera(db.Model):
     id = db.Column(db.Integer, primary_key=True);
@@ -69,7 +71,7 @@ class Camera(db.Model):
         if not self.switch:
             self.switch = True
             db.session.commit();
-            thread = socketio.start_background_task(target=do_work, cam_id = self.id);
+            thread = socketio.start_background_task(target=do_work, cam_id = self.id, app = current_app._get_current_object());
             self.thread_id = thread.ident;
             db.session.commit()
             workers.append(thread);
